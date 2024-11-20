@@ -1,3 +1,4 @@
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -29,7 +30,9 @@ const MobileNavigation = () => {
         side="left"
         className="background-light900_dark200 border-none"
       >
-        <SheetTitle className="hidden">Navigation</SheetTitle>
+        <VisuallyHidden>
+          <SheetTitle>Navigation</SheetTitle>
+        </VisuallyHidden>
         <Link href="/" className="flex items-center gap-1">
           <Image
             src="/images/site-logo.svg"
@@ -38,19 +41,19 @@ const MobileNavigation = () => {
             height={23}
           />
 
-          <p className="h2-bold font-space-grotesk  text-dark-100 dark:text-light-900 ">
+          <p className="h2-bold font-space-grotesk text-dark-100 dark:text-light-900 ">
             Dev<span className="text-primary-500">Flow</span>
           </p>
         </Link>
 
-        <div className="no-scrollbar flex h-[calc(100vh-80px)] flex-col justify-between overflow-y-auto ">
+        <div className="no-scrollbar flex h-full flex-col justify-between overflow-y-auto ">
           <SheetClose asChild>
-            <section className="flex h-full flex-col gap-6 pt-16">
+            <section className="flex flex-col gap-6 pt-16">
               <NavLinks isMobileNav />
             </section>
           </SheetClose>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 py-6">
             <SheetClose asChild>
               <Link href={ROUTES.SIGN_IN}>
                 <Button className="small-medium btn-secondary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
